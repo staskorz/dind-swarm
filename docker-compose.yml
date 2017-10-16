@@ -3,58 +3,61 @@ version: '3.3'
 services:
   manager1:
     image: docker:stable-dind
+    hostname: manager1
     privileged: true
     volumes:
       - manager1:/var/lib/docker
     command: --storage-driver=overlay2
     networks:
       swarm:
-        ipv4_address: 172.16.238.11
+        ipv4_address: 172.16.238.201
   manager2:
     image: docker:stable-dind
+    hostname: manager2
     privileged: true
     volumes:
       - manager2:/var/lib/docker
     command: --storage-driver=overlay2
     networks:
       swarm:
-        ipv4_address: 172.16.238.12
+        ipv4_address: 172.16.238.202
   manager3:
     image: docker:stable-dind
+    hostname: manager3
     privileged: true
     volumes:
       - manager3:/var/lib/docker
     command: --storage-driver=overlay2
     networks:
       swarm:
-        ipv4_address: 172.16.238.13
+        ipv4_address: 172.16.238.203
   worker1:
     image: docker:stable-dind
+    hostname: worker1
     privileged: true
     volumes:
       - worker1:/var/lib/docker
     command: --storage-driver=overlay2
     networks:
       swarm:
-        ipv4_address: 172.16.238.21    
   worker2:
     image: docker:stable-dind
+    hostname: worker2
     privileged: true
     volumes:
       - worker2:/var/lib/docker
     command: --storage-driver=overlay2
     networks:
       swarm:
-        ipv4_address: 172.16.238.22
   worker3:
     image: docker:stable-dind
+    hostname: worker3
     privileged: true
     volumes:
       - worker3:/var/lib/docker
     command: --storage-driver=overlay2
     networks:
       swarm:
-        ipv4_address: 172.16.238.23
 
 volumes:
   manager1:
