@@ -1,0 +1,71 @@
+version: '3.3'
+
+services:
+  manager1:
+    image: docker:stable-dind
+    privileged: true
+    volumes:
+      - manager1:/var/lib/docker
+    command: --storage-driver=overlay2
+    networks:
+      swarm:
+        ipv4_address: 172.16.238.11
+  manager2:
+    image: docker:stable-dind
+    privileged: true
+    volumes:
+      - manager2:/var/lib/docker
+    command: --storage-driver=overlay2
+    networks:
+      swarm:
+        ipv4_address: 172.16.238.12
+  manager3:
+    image: docker:stable-dind
+    privileged: true
+    volumes:
+      - manager3:/var/lib/docker
+    command: --storage-driver=overlay2
+    networks:
+      swarm:
+        ipv4_address: 172.16.238.13
+  worker1:
+    image: docker:stable-dind
+    privileged: true
+    volumes:
+      - worker1:/var/lib/docker
+    command: --storage-driver=overlay2
+    networks:
+      swarm:
+        ipv4_address: 172.16.238.21    
+  worker2:
+    image: docker:stable-dind
+    privileged: true
+    volumes:
+      - worker2:/var/lib/docker
+    command: --storage-driver=overlay2
+    networks:
+      swarm:
+        ipv4_address: 172.16.238.22
+  worker3:
+    image: docker:stable-dind
+    privileged: true
+    volumes:
+      - worker3:/var/lib/docker
+    command: --storage-driver=overlay2
+    networks:
+      swarm:
+        ipv4_address: 172.16.238.23
+
+volumes:
+  manager1:
+  manager2:
+  manager3:
+  worker1:
+  worker2:
+  worker3:
+
+networks:
+  swarm:
+    ipam:
+      config:
+        - subnet: 172.16.238.0/24
