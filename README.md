@@ -30,4 +30,4 @@ export PS1='\u@\h:\w \$ ' # optional
 source /etc/profile.d/bash_completion.sh
 ```
 
-- Run `bash` on `manager1` and (`docker container exec -it dindswarm_manager1_1 bash`)
+- Run `bash` on `manager1` and enjoy docker-bash-completion (`docker container exec -it dindswarm_manager1_1 bash`)
